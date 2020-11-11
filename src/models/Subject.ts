@@ -1,9 +1,7 @@
 import {IModel} from "../util/interface";
 import {Property} from "@tsed/schema";
-import {Model, MongoosePlugin, ObjectID} from "@tsed/mongoose";
-import autopoulate from "mongoose-autopopulate";
-@Model()
-@MongoosePlugin(autopoulate)
+import {ObjectID, Schema} from "@tsed/mongoose";
+@Schema()
 export class Subject implements IModel {
   constructor() {}
   @ObjectID("id")
