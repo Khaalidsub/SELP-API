@@ -6,7 +6,7 @@ import autopoulate from "mongoose-autopopulate";
 import {User} from "./User";
 
 @Model()
-@MongoosePlugin(autopoulate)
+// @MongoosePlugin(autopoulate)
 export class Department implements IModel {
   constructor() {}
   @ObjectID("id")

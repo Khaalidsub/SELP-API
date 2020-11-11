@@ -6,8 +6,11 @@ import autopoulate from "mongoose-autopopulate";
 // @MongoosePlugin(autopoulate)
 export class User implements IUser {
   constructor() {}
+
   @ObjectID("id")
   _id: string;
+  @Property()
+  email: string;
   @Property()
   universityId: string;
   @Property()
