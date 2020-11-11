@@ -1,8 +1,9 @@
 import {Property} from "@tsed/schema";
-import {Model, ObjectID} from "@tsed/mongoose";
+import {Model, ObjectID, MongoosePlugin} from "@tsed/mongoose";
 import {IUser, role} from "../util/interface";
-
+import autopoulate from "mongoose-autopopulate";
 @Model()
+@MongoosePlugin(autopoulate)
 export class User implements IUser {
   constructor() {}
   @ObjectID("id")

@@ -24,6 +24,7 @@
     "@tsed/passport": "6.3.4",
     "@tsed/platform-express": "6.3.4",
     "@tsed/socketio": "6.3.4",
+    "@types/mongoose-autopopulate": "^0.10.1",
     "ajv": "6.12.6",
     "apollo-datasource": "0.7.2",
     "apollo-datasource-rest": "0.9.5",
@@ -39,6 +40,7 @@
     "graphql": "14.7.0",
     "method-override": "3.0.0",
     "mongoose": "5.10.13",
+    "mongoose-autopopulate": "^0.12.3",
     "multer": "1.4.2",
     "passport": "0.4.1",
     "type-graphql": "1.1.1"
