@@ -3,7 +3,7 @@ import {Model, ObjectID, MongoosePlugin} from "@tsed/mongoose";
 import {IUser, role} from "../util/interface";
 import autopoulate from "mongoose-autopopulate";
 @Model()
-@MongoosePlugin(autopoulate)
+// @MongoosePlugin(autopoulate)
 export class User implements IUser {
   constructor() {}
   @ObjectID("id")

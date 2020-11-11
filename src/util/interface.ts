@@ -17,5 +17,14 @@ export interface ICredential {
   password: string;
 }
 export interface IModel {
-  _id: String;
+  _id: string;
+}
+
+export interface IService<T> {
+  add(obj: T): any;
+  find({query}: any): any;
+  findOne({query}: any): any;
+  findById(id: String): any;
+  set(obj: T): any;
+  delete(id: String): Promise<boolean>;
 }
