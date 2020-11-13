@@ -14,7 +14,7 @@ describe("Server", () => {
   afterEach(PlatformTest.reset);
 
   it("should call GET /", async () => {
-    const response = await request.get("/rest").expect(404);
+    const response = await request.get("/").expect(404);
 
     expect(response.body).to.deep.equal({
       errors: [],

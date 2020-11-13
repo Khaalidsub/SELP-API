@@ -6,6 +6,7 @@ import * as compress from "compression";
 import * as cookieParser from "cookie-parser";
 import * as methodOverride from "method-override";
 import * as cors from "cors";
+import * as helmet from "helmet";
 import "@tsed/ajv";
 import "@tsed/mongoose";
 import "@tsed/graphql";
@@ -62,6 +63,7 @@ export class Server {
 
   $beforeRoutesInit() {
     this.app
+      .use(helmet())
       .use(cors())
       .use(cookieParser())
       .use(compress({}))
