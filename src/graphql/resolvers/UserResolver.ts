@@ -1,31 +1,29 @@
 import {$log, BodyParams, Req} from "@tsed/common";
 import {Inject} from "@tsed/di";
 import {ResolverService} from "@tsed/graphql";
-import {Authenticate, Authorize} from "@tsed/passport";
 import {Arg, Mutation, Query, Ctx, Authorized} from "type-graphql";
 import {UserService} from "../../services/UserService";
 import {User} from "../schema/User";
+import {Credential} from "../schema/Credential";
 import {Response} from "../schema/Response";
 @ResolverService(User)
 export class UserResvolver {
   @Inject()
   private userService: UserService;
 
-  @Authenticate("login")
   @Mutation(() => Response)
-  async login(@Arg("user") req: User) {
-    return {success: true, message: "sucess", data: req};
+  async login(@Arg("credential") req: Credential) {
+    const result = await this.userService.find({});
+    return {success: true, message: "sucess", data: result};
   }
 
   @Mutation(() => Response)
-  @Authenticate("signup")
   signUp(@Arg("user") req: User) {
     return {success: true, message: "sucess", data: req};
   }
 
-  @Authorize("jwt")
   @Query(() => Response)
-  async getSession(@Req("account") req: User) {
+  async getSession(@Req("jwt") req: String) {
     try {
       return req;
     } catch (error) {

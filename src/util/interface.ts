@@ -1,3 +1,5 @@
+import {User} from "../models/User";
+
 export enum role {
   student = "STUDENT",
   coach = "COACH",
@@ -41,4 +43,8 @@ export interface IController<T> {
   update(obj: T): Promise<T>;
   edit(obj: T): Promise<T>;
   delete(id: string): Promise<boolean>;
+}
+
+export interface Context {
+  user?: User;
 }

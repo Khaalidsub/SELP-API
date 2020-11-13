@@ -10,6 +10,7 @@ import "@tsed/ajv";
 import "@tsed/mongoose";
 import "@tsed/graphql";
 import mongooseConfig from "./config/mongoose";
+import {authChecker} from "./util";
 
 export const rootDir = __dirname;
 
@@ -36,8 +37,10 @@ export const rootDir = __dirname;
 
       buildSchemaOptions: {
         emitSchemaFile: true,
+        authChecker: authChecker,
       },
       serverConfig: {
+        mocks: true,
         context: ({req}) => {
           // $log.info("graph", req.passport);
           // logger: req.logger;

@@ -4,7 +4,6 @@ import {IUser, role} from "../../util/interface";
 @ObjectType()
 @InputType("AddUser")
 export class User implements IUser {
-  universityId: string;
   @Field(() => ID, {nullable: true})
   _id: string;
   @Field()
@@ -17,4 +16,6 @@ export class User implements IUser {
   role: role;
   @Field()
   phoneNumber: string;
+  @Field()
+  universityId: string;
 }

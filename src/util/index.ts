@@ -1,4 +1,6 @@
 import {Schema} from "mongoose";
+import {AuthChecker} from "type-graphql";
+import {Context} from "./interface";
 
 export function autoPopulateAllFields(schema: Schema) {
   var paths = "";
@@ -22,3 +24,24 @@ export function autoPopulateAllFields(schema: Schema) {
     next();
   }
 }
+
+// create auth checker function
+export const authChecker: AuthChecker<Context> = ({context: {user}}, roles) => {
+  if (roles.length === 0) {
+    // if `@Authorized()`, check only is user exist
+    return user !== undefined;
+  }
+  // there are some roles defined now
+
+  if (!user) {
+    // and if no user, restrict access
+    return false;
+  }
+  if (roles.includes(user.role)) {
+    // grant access if the roles overlap
+    return true;
+  }
+
+  // no roles matched, restrict access
+  return false;
+};
