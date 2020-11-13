@@ -5,9 +5,9 @@ import {Model} from "./Model";
 @ObjectType()
 export class Response implements IResponse {
   @Field()
-  success: Boolean;
+  success: boolean;
   @Field()
-  message: String;
+  message: string;
   @Field()
   data?: Model;
 }

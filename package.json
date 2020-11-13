@@ -8,6 +8,9 @@
     "tsc:w": "tsc --project tsconfig.json -w",
     "start": "nodemon --watch \"src/**/*.ts\" --ignore \"node_modules/**/*\" --exec ts-node src/index.ts",
     "start:prod": "cross-env NODE_ENV=production node dist/index.js",
+    "test": "yarn test:lint && yarn test:coverage",
+    "test:unit": "cross-env NODE_ENV=test mocha",
+    "test:coverage": "cross-env NODE_ENV=test nyc mocha",
     "test:lint": "eslint src --ext .ts",
     "test:lint:fix": "eslint src --ext .ts --fix",
     "prettier": "prettier '{src,test}/**/*.ts' --write"

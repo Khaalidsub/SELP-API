@@ -3,7 +3,7 @@ import {Property} from "@tsed/schema";
 import {ObjectID, Schema} from "@tsed/mongoose";
 @Schema()
 export class Subject implements IModel {
-  constructor() {}
+  // constructor() {}
   @ObjectID("id")
   _id: string;
   @Property()

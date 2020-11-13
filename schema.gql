@@ -13,13 +13,6 @@ input AddUser {
   universityId: String!
 }
 
-input Credential {
-  _id: ID
-  email: String!
-  password: String!
-  role: String
-}
-
 type Model {
   _id: ID
 }
@@ -27,7 +20,7 @@ type Model {
 type Mutation {
   addUser(user: AddUser!): Response!
   deleteUser(id: String!): Response!
-  login(credential: Credential!): Response!
+  login: Response!
   signUp(user: AddUser!): Response!
   updateUser(user: AddUser!): Response!
 }

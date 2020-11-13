@@ -1,10 +1,10 @@
-import {$log, BodyParams, Req} from "@tsed/common";
+import {$log, Req} from "@tsed/common";
 import {Inject} from "@tsed/di";
 import {ResolverService} from "@tsed/graphql";
-import {Arg, Mutation, Query, Ctx, Authorized} from "type-graphql";
+import {Arg, Mutation, Query} from "type-graphql";
 import {UserService} from "../../services/UserService";
 import {User} from "../schema/User";
-import {Credential} from "../schema/Credential";
+// import {Credential} from "../schema/Credential";
 import {Response} from "../schema/Response";
 @ResolverService(User)
 export class UserResvolver {
@@ -12,7 +12,7 @@ export class UserResvolver {
   private userService: UserService;
 
   @Mutation(() => Response)
-  async login(@Arg("credential") req: Credential) {
+  async login() {
     const result = await this.userService.find({});
     return {success: true, message: "sucess", data: result};
   }
@@ -23,7 +23,7 @@ export class UserResvolver {
   }
 
   @Query(() => Response)
-  async getSession(@Req("jwt") req: String) {
+  async getSession(@Req("jwt") req: string) {
     try {
       return req;
     } catch (error) {
@@ -32,7 +32,7 @@ export class UserResvolver {
     }
   }
 
-  @Query((returns) => User)
+  @Query(() => User)
   async user(@Arg("id") id: string) {
     const user = await this.userService.findById(id);
     if (user === undefined) {
@@ -42,11 +42,11 @@ export class UserResvolver {
     return user;
   }
 
-  @Query((returns) => [User], {})
+  @Query(() => [User], {})
   users() {
     return this.userService.find({});
   }
-  @Mutation((User) => Response)
+  @Mutation(() => Response)
   async addUser(@Arg("user") user: User): Promise<Response> {
     try {
       const result = await this.userService.add(user);
@@ -70,7 +70,7 @@ export class UserResvolver {
     }
   }
 
-  @Mutation((User) => Response)
+  @Mutation(() => Response)
   async updateUser(@Arg("user") user: User): Promise<Response> {
     try {
       const result = await this.userService.set(user);

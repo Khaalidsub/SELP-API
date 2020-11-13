@@ -1,5 +1,5 @@
 import {Configuration, Inject} from "@tsed/di";
-import {$log, PlatformApplication} from "@tsed/common";
+import {PlatformApplication} from "@tsed/common";
 import "@tsed/platform-express"; // /!\ keep this import
 import * as bodyParser from "body-parser";
 import * as compress from "compression";
@@ -41,7 +41,7 @@ export const rootDir = __dirname;
       },
       serverConfig: {
         mocks: true,
-        context: ({req}) => {
+        context: ({}) => {
           // $log.info("graph", req.passport);
           // logger: req.logger;
         },

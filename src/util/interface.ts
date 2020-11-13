@@ -16,8 +16,8 @@ export interface IUser extends IModel {
   role: role;
 }
 export interface IResponse {
-  success: Boolean;
-  message: String;
+  success: boolean;
+  message: string;
   data?: IModel | IModel[];
 }
 export interface ICredential {
@@ -32,9 +32,9 @@ export interface IService<T> {
   add(obj: T): any;
   find({query}: any): any;
   findOne({query}: any): any;
-  findById(id: String): any;
+  findById(id: string): any;
   set(obj: T): any;
-  delete(id: String): Promise<boolean>;
+  delete(id: string): Promise<boolean>;
 }
 export interface IController<T> {
   getAll(): Promise<T[]>;

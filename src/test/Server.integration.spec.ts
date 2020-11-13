@@ -13,12 +13,12 @@ describe("Server", () => {
 
   afterEach(PlatformTest.reset);
 
-  it("should call GET /rest", async () => {
+  it("should call GET /", async () => {
     const response = await request.get("/rest").expect(404);
 
     expect(response.body).to.deep.equal({
       errors: [],
-      message: 'Resource "/rest" not found',
+      message: 'Resource "/" not found',
       name: "NOT_FOUND",
       status: 404,
     });

@@ -3,7 +3,7 @@ import {AuthChecker} from "type-graphql";
 import {Context} from "./interface";
 
 export function autoPopulateAllFields(schema: Schema) {
-  var paths = "";
+  let paths = "";
 
   //checks every schema field path
   schema.eachPath(function process(pathname: string, schemaType: any) {

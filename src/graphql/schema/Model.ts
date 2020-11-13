@@ -3,6 +3,6 @@ import {IModel} from "../../util/interface";
 
 @ObjectType()
 export class Model implements IModel {
-  @Field((type) => ID, {nullable: true})
+  @Field(() => ID, {nullable: true})
   _id: string;
 }

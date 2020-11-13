@@ -6,8 +6,7 @@ import {User} from "./User";
 
 @ObjectType()
 export class Department implements IModel {
-  constructor() {}
-  @Field((type) => ID, {nullable: true})
+  @Field(() => ID, {nullable: true})
   _id: string;
   @Field()
   departmentName: string;
