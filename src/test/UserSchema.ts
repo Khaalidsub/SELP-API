@@ -7,3 +7,8 @@ export const ADD_USER = gql`
     }
   }
 `;
+export const FETCH_USERS = gql`
+  query users {
+    _id
+  }
+`;

@@ -2,8 +2,8 @@ import {PlatformTest} from "@tsed/common";
 import {MongooseModel} from "@tsed/mongoose";
 import {TestMongooseContext} from "@tsed/testing-mongoose";
 
-import {User} from "../models/User";
-import {role} from "../util/interface";
+import {User} from "../../models/User";
+import {role} from "../../util/interface";
 
 describe("UserModel", () => {
   beforeEach(TestMongooseContext.create);

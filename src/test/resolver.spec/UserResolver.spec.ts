@@ -2,9 +2,10 @@ import {PlatformTest} from "@tsed/common";
 import "@tsed/platform-express";
 import {ApolloServerTestClient, createTestClient} from "apollo-server-testing";
 import {GraphQLService} from "@tsed/graphql";
-import {Server} from "../Server";
-import {ADD_USER} from "./UserSchema";
-import {role} from "../util/interface";
+import {Server} from "../../Server";
+import {ADD_USER, FETCH_USERS} from "../UserSchema";
+import {role} from "../../util/interface";
+import {User} from "../../models/User";
 
 describe("User Resolver", () => {
   let request: ApolloServerTestClient;
@@ -15,7 +16,7 @@ describe("User Resolver", () => {
   });
   afterAll(PlatformTest.reset);
 
-  it("should get recipes", async () => {
+  it("should add user", async () => {
     const response = await request.mutate({
       mutation: ADD_USER,
       variables: {
@@ -30,12 +31,14 @@ describe("User Resolver", () => {
       },
     });
 
-    expect(response.data).toEqual({
-      data: {
-        addUser: {
-          success: true,
-        },
-      },
+    expect.objectContaining<User>(response.data);
+  });
+
+  it("should get users", async () => {
+    const response = await request.query({
+      query: FETCH_USERS,
     });
+
+    expect.objectContaining<User[]>(response.data);
   });
 });
