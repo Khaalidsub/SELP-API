@@ -1,20 +1,19 @@
 import {PlatformTest} from "@tsed/common";
 import "@tsed/platform-express";
 import {ApolloServerTestClient, createTestClient} from "apollo-server-testing";
-import {expect} from "chai";
 import {GraphQLService} from "@tsed/graphql";
-import {Server} from "../../../Server";
-import {ADD_USER} from "../samples/UserSchema";
-import {role} from "../../../util/interface";
+import {Server} from "../Server";
+import {ADD_USER} from "./UserSchema";
+import {role} from "../util/interface";
 
 describe("User Resolver", () => {
   let request: ApolloServerTestClient;
-  before(PlatformTest.bootstrap(Server));
-  before(() => {
+  beforeAll(PlatformTest.bootstrap(Server));
+  beforeAll(() => {
     const server = PlatformTest.get<GraphQLService>(GraphQLService).get("server1")!;
     request = createTestClient(server);
   });
-  after(PlatformTest.reset);
+  afterAll(PlatformTest.reset);
 
   it("should get recipes", async () => {
     const response = await request.mutate({
@@ -31,7 +30,7 @@ describe("User Resolver", () => {
       },
     });
 
-    expect(response.data).to.deep.eq({
+    expect(response.data).toEqual({
       data: {
         addUser: {
           success: true,
