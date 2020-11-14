@@ -14,22 +14,35 @@ describe("User Service", () => {
   it("should add a user", async () => {
     const instance = PlatformTest.get<UserService>(UserService);
     // const instance = await PlatformTest.get<UserService>(UserService); // get fresh instance
-    const response = await instance.add({
-      email: "khaalidsubaan@gmail.com",
-      name: "khaalid",
-      phoneNumber: "01125601863",
-      role: role.student,
-      universityId: "blue",
-      password: "wer123",
-    } as User);
-    console.log(response);
+    try {
+      const response = await instance.add({
+        email: "khaalidsubaan@gmail.com",
+        name: "khaalid",
+        phoneNumber: "01125601863",
+        role: role.student,
+        universityId: "blue",
+        password: "wer123",
+      } as User);
+      console.log(response);
 
-    expect.objectContaining<User>(response as User);
+      expect.objectContaining<User>(response as User);
+    } catch (error) {
+      console.log(error);
+
+      expect(error).toThrowError();
+    }
   });
 
   it("should get users", async () => {
     const instance = PlatformTest.get<UserService>(UserService);
-    await instance.find({});
+    try {
+      const result = await instance.find({});
+      expect(result);
+    } catch (error) {
+      console.log(error);
+      expect(error).toThrowError();
+    }
+
     // expect.any(response);
   });
 });
