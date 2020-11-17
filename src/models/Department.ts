@@ -8,14 +8,12 @@ import {User} from "./User";
 @Model()
 // @MongoosePlugin(autopoulate)
 export class Department implements IModel {
-  // constructor() {}
   @ObjectID("id")
   _id: string;
   @Property()
   departmentName: string;
-  @CollectionOf(Subject)
-  subjects: Subject[];
-  //moderator
+  @Ref(Subject)
+  subjects: Ref<Subject>[];
   @Ref(User)
   departmentModerator: Ref<User>;
 }

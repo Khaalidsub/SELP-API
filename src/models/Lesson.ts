@@ -3,6 +3,7 @@ import {Property} from "@tsed/schema";
 import {Model, ObjectID, PostHook, PreHook, Ref} from "@tsed/mongoose";
 import {Subject} from "../graphql/schema/Subject";
 import {User} from "../graphql/schema/User";
+import {Coach} from "./Coach";
 export class Lesson implements IModel {
   @ObjectID("id")
   _id: string;
@@ -13,7 +14,7 @@ export class Lesson implements IModel {
   @Ref(Subject)
   subject: Ref<Subject>;
   @Ref(User)
-  coach: Ref<User>;
+  coach: Ref<Coach>;
   @Property()
   scheduled: LessonTime;
 

@@ -13,7 +13,7 @@ export enum Day {
   thursday,
   friday,
 }
-export enum AccountStatus {
+export enum Status {
   active = "ACTIVE",
   pending = "PENDING",
 }
@@ -24,18 +24,6 @@ export enum Difficulty {
   hard,
   crazy,
 }
-
-export type Answer = {
-  input: string;
-  upvotes: string;
-  userId: string;
-};
-
-export type DayTime = {
-  day: Day;
-  timeStart: Date;
-  timeEnd: Date;
-};
 
 export type LessonTime = {
   timeStart: Date;
@@ -49,6 +37,7 @@ export interface IUser extends IModel {
   phoneNumber: string;
   universityId: string;
   role: Role;
+  accountStatus: Status;
 }
 export interface IResponse {
   success: boolean;
