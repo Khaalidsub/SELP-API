@@ -1,11 +1,46 @@
 import {User} from "../models/User";
 
-export enum role {
+export enum Role {
   student = "STUDENT",
   coach = "COACH",
   admin = "ADMIN",
   moderator = "MODERATOR",
 }
+export enum Day {
+  monday,
+  tuesday,
+  wednesday,
+  thursday,
+  friday,
+}
+export enum AccountStatus {
+  active = "ACTIVE",
+  pending = "PENDING",
+}
+
+export enum Difficulty {
+  easy,
+  medium,
+  hard,
+  crazy,
+}
+
+export type Answer = {
+  input: string;
+  upvotes: string;
+  userId: string;
+};
+
+export type DayTime = {
+  day: Day;
+  timeStart: Date;
+  timeEnd: Date;
+};
+
+export type LessonTime = {
+  timeStart: Date;
+  timeEnd: Date;
+};
 
 export interface IUser extends IModel {
   name: string;
@@ -13,7 +48,7 @@ export interface IUser extends IModel {
   email: string;
   phoneNumber: string;
   universityId: string;
-  role: role;
+  role: Role;
 }
 export interface IResponse {
   success: boolean;

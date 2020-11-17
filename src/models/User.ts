@@ -1,6 +1,7 @@
 import {Property} from "@tsed/schema";
-import {Model, ObjectID, PostHook, PreHook} from "@tsed/mongoose";
-import {IUser, role} from "../util/interface";
+import {Model, ObjectID, PostHook, PreHook, Ref} from "@tsed/mongoose";
+import {AccountStatus, IUser, Role} from "../util/interface";
+import {Department} from "../graphql/schema/Department";
 // import autopoulate from "mongoose-autopopulate";
 @Model()
 // @MongoosePlugin(autopoulate)
@@ -15,8 +16,6 @@ import {IUser, role} from "../util/interface";
   next();
 })
 export class User implements IUser {
-  // constructor() {}
-
   @ObjectID("id")
   _id: string;
   @Property()
@@ -30,11 +29,11 @@ export class User implements IUser {
   @Property()
   phoneNumber: string;
   @Property()
-  role: role;
-
+  role: Role;
+  @Property()
+  accountStatus: AccountStatus;
   @Property()
   pre?: string;
-
   @Property()
   post?: string;
 }

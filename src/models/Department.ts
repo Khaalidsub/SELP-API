@@ -18,8 +18,4 @@ export class Department implements IModel {
   //moderator
   @Ref(User)
   departmentModerator: Ref<User>;
-  @Ref(User)
-  departmentStudents: Ref<User>[];
-  @Ref(User)
-  administrator: Ref<User>;
 }
