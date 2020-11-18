@@ -50,6 +50,7 @@ export class UserResvolver {
   async addUser(@Arg("user") user: User): Promise<Response> {
     try {
       const result = await this.userService.add(user);
+
       // return result as User;
       return {success: true, message: "sucess", data: result};
     } catch (error) {
@@ -73,9 +74,9 @@ export class UserResvolver {
   @Mutation(() => Response)
   async updateUser(@Arg("user") user: User): Promise<Response> {
     try {
-      const result = await this.userService.set(user);
+      await this.userService.set(user);
       // return result as User;
-      return {success: true, message: "sucess", data: result};
+      return {success: true, message: "sucess", data: user};
     } catch (error) {
       // return new User();
       return {success: false, message: error};

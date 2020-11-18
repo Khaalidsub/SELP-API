@@ -3,7 +3,7 @@ import {MongooseModel} from "@tsed/mongoose";
 import {TestMongooseContext} from "@tsed/testing-mongoose";
 
 import {User} from "../../models/User";
-import {role} from "../../util/interface";
+import {Role} from "../../util/interface";
 
 describe("UserModel", () => {
   beforeEach(TestMongooseContext.create);
@@ -17,16 +17,16 @@ describe("UserModel", () => {
       email: "khaalidsubaan@gmail.com",
       name: "khaalid",
       phoneNumber: "01125601863",
-      role: role.student,
+      role: Role.student,
       universityId: "blue",
       password: "wer123",
     });
 
     // WHEN
-    await user.save();
+    const result = await user.save();
 
     // THEN
-    expect(user.pre).toEqual("hello pre");
-    expect(user.post).toEqual("hello post");
+
+    expect(result.id).not.toBeNull();
   });
 });

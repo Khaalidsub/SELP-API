@@ -1,19 +1,16 @@
 import {ID, ObjectType} from "type-graphql";
 import {Field} from "type-graphql/dist/decorators/Field";
+import {DayTime} from "../../models/CoachSchedule";
 import {IModel} from "../../util/interface";
-import {Subject} from "./Subject";
-import {User} from "./User";
+import {Coach} from "./Coach";
 
 @ObjectType()
-export class Department implements IModel {
+export class CoachSchedule implements IModel {
   @Field(() => ID, {nullable: true})
   _id: string;
   @Field()
-  departmentName: string;
-  @Field(() => [Subject], {})
-  subjects: Subject[];
+  coach: Coach;
+  @Field(() => [DayTime], {})
+  week: DayTime[];
   //moderator
-
-  @Field(() => User, {})
-  departmentModerator: User;
 }

@@ -1,6 +1,6 @@
-import {Difficulty, IModel, LessonTime} from "../util/interface";
+import {IModel, LessonTime} from "../util/interface";
 import {Property} from "@tsed/schema";
-import {Model, ObjectID, PostHook, PreHook, Ref} from "@tsed/mongoose";
+import {ObjectID, Ref} from "@tsed/mongoose";
 import {Subject} from "../graphql/schema/Subject";
 import {User} from "../graphql/schema/User";
 import {Coach} from "./Coach";

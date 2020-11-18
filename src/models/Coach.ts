@@ -35,7 +35,7 @@ export class Coach extends User {
   @Property()
   information: string;
   @CollectionOf(SubjectSpecialization)
-  specializationss: SubjectSpecialization[];
+  specializations: SubjectSpecialization[];
   @Ref(User)
   user: Ref<User>;
 }

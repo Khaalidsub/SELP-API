@@ -4,7 +4,7 @@ import {ApolloServerTestClient, createTestClient} from "apollo-server-testing";
 import {GraphQLService} from "@tsed/graphql";
 import {Server} from "../../Server";
 import {ADD_USER, FETCH_USERS} from "../UserSchema";
-import {role} from "../../util/interface";
+import {Role} from "../../util/interface";
 import {User} from "../../models/User";
 
 describe("User Resolver", () => {
@@ -24,7 +24,7 @@ describe("User Resolver", () => {
           email: "khaalidsubaan@gmail.com",
           name: "khaalid",
           phoneNumber: "01125601863",
-          role: role.student,
+          role: Role.student,
           universityId: "blue",
           password: "wer123",
         },

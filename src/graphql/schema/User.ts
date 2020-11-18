@@ -1,5 +1,5 @@
 import {Field, ID, InputType, ObjectType} from "type-graphql";
-import {IUser, role} from "../../util/interface";
+import {IUser, Role, Status} from "../../util/interface";
 
 @ObjectType()
 @InputType("AddUser")
@@ -13,9 +13,11 @@ export class User implements IUser {
   @Field()
   password: string;
   @Field()
-  role: role;
+  role: Role;
   @Field()
   phoneNumber: string;
   @Field()
   universityId: string;
+  @Field()
+  accountStatus: Status;
 }

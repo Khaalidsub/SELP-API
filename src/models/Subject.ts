@@ -1,7 +1,7 @@
 import {IModel} from "../util/interface";
 import {Property} from "@tsed/schema";
-import {Model, ObjectID, Ref, Schema} from "@tsed/mongoose";
-import {Department} from "../graphql/schema/Department";
+import {Model, ObjectID} from "@tsed/mongoose";
+
 @Model()
 export class Subject implements IModel {
   @ObjectID("id")

@@ -5,7 +5,7 @@ import {IModel, IService} from "../util/interface";
 
 export class Service<T extends IModel> implements IService<T> {
   constructor(public model: MongooseModel<T>) {}
-  async add(obj: T): Promise<T | null> {
+  async add(obj: T): Promise<T> {
     try {
       $log.info("info", obj);
       const doc = new this.model(obj);
@@ -13,7 +13,7 @@ export class Service<T extends IModel> implements IService<T> {
       return doc;
     } catch (error) {
       $log.error(error);
-      return null;
+      throw error;
     }
   }
   async find({query}: any): Promise<T[] | null> {

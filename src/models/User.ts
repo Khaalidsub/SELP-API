@@ -1,7 +1,7 @@
 import {Property, Enum} from "@tsed/schema";
 import {Model, ObjectID, PostHook, PreHook} from "@tsed/mongoose";
 import {Status, IUser, Role} from "../util/interface";
-import {Department} from "../graphql/schema/Department";
+
 // import autopoulate from "mongoose-autopopulate";
 @Model()
 // @MongoosePlugin(autopoulate)
